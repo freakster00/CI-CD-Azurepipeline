@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more: https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  name: dogFactCICD
+
+steps:
+- script: |
+    echo Cleaning workspace...
+    rm -rf *
+  displayName: 'Clean workspace'
+
+- script: sudo service petfacts stop
+  displayName: 'Stop the server'
+
+- checkout: self
+
+- script: |
+    cp -r $(Build.SourcesDirectory)/* /home/azureuser/azureCICD
+  displayName: 'Copy repository contents to target folder'
+
+- script: sudo service petfacts start
+  displayName: 'start the server'
