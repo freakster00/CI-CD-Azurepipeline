@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/v1', methods=['GET'])
 def hello_world():
     api_url = 'https://dog-api.kinduff.com/api/facts?number=1'
 
