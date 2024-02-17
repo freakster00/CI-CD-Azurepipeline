@@ -12,7 +12,7 @@ def hello_world():
         if response.status_code == 200:
             data = response.json()
             responseFacts={
-                "Fact":data['facts'][0]
+                "Response":data['facts'][0]
             }
             return jsonify(responseFacts)
         else:
